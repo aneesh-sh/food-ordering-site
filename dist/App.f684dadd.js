@@ -28863,37 +28863,44 @@ if ("development" === 'production') {
     }
   };
 }
-},{"react-dom":"node_modules/react-dom/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react-dom":"node_modules/react-dom/index.js"}],"src/utils/constant.js":[function(require,module,exports) {
 "use strict";
 
-var _react = _interopRequireDefault(require("react"));
-var _client = _interopRequireDefault(require("react-dom/client"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-// Header
-// logocontainer
-//   logo  
-//   links
-// body
-//   search
-//   restarantcontainer
-//   restarant card
-//    img
-// menu name star-rating
-// footer
-//   links
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LOGO_URL = exports.CDN_URL = void 0;
+var CDN_URL = exports.CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/";
+var LOGO_URL = exports.LOGO_URL = "https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg?size=338&ext=jpg&ga=GA1.1.1448711260.1707091200&semt=ais";
+},{}],"src/components/Header.js":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _constant = require("../utils/constant");
 var Header = function Header() {
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "header"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "logoContainer"
-  }, /*#__PURE__*/_react.default.createElement("img", {
+  }, /*#__PURE__*/React.createElement("img", {
     className: "logo",
-    src: "https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg?size=338&ext=jpg&ga=GA1.1.1448711260.1707091200&semt=ais"
-  })), /*#__PURE__*/_react.default.createElement("div", {
+    src: _constant.LOGO_URL
+  })), /*#__PURE__*/React.createElement("div", {
     className: "nav-items"
-  }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, "Home"), /*#__PURE__*/_react.default.createElement("li", null, "About us"), /*#__PURE__*/_react.default.createElement("li", null, "contact us"), /*#__PURE__*/_react.default.createElement("li", null, "Cart"))));
+  }, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Home"), /*#__PURE__*/React.createElement("li", null, "About us"), /*#__PURE__*/React.createElement("li", null, "contact us"), /*#__PURE__*/React.createElement("li", null, "Cart"))));
 };
+var _default = exports.default = Header;
+},{"../utils/constant":"src/utils/constant.js"}],"src/components/RestaurantCard.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _constant = require("../utils/constant");
 var RestaurantCard = function RestaurantCard(props) {
   var resData = props.resData;
   var _resData$data = resData === null || resData === void 0 ? void 0 : resData.data,
@@ -28903,14 +28910,22 @@ var RestaurantCard = function RestaurantCard(props) {
     avgRating = _resData$data.avgRating,
     costForTwo = _resData$data.costForTwo,
     deliveryTime = _resData$data.deliveryTime;
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "rest-card"
-  }, /*#__PURE__*/_react.default.createElement("img", {
+  }, /*#__PURE__*/React.createElement("img", {
     className: "rest-logo",
     alt: "rest-logo",
-    src: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/" + resData.data.cloudinaryImageId
-  }), /*#__PURE__*/_react.default.createElement("h3", null, name), /*#__PURE__*/_react.default.createElement("h4", null, cuisines.join(', ')), /*#__PURE__*/_react.default.createElement("h4", null, avgRating, " stars"), /*#__PURE__*/_react.default.createElement("h4", null, costForTwo / 100, "FOR TWO"), /*#__PURE__*/_react.default.createElement("h4", null, deliveryTime, " minutes"));
+    src: _constant.CDN_URL + resData.data.cloudinaryImageId
+  }), /*#__PURE__*/React.createElement("h3", null, name), /*#__PURE__*/React.createElement("h4", null, cuisines.join(', ')), /*#__PURE__*/React.createElement("h4", null, avgRating, " stars"), /*#__PURE__*/React.createElement("h4", null, costForTwo / 100, "FOR TWO"), /*#__PURE__*/React.createElement("h4", null, deliveryTime, " minutes"));
 };
+var _default = exports.default = RestaurantCard;
+},{"../utils/constant":"src/utils/constant.js"}],"src/utils/mockData.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 var resList = [{
   type: 'restaurant',
   data: {
@@ -30708,31 +30723,115 @@ var resList = [{
   },
   subtype: 'basic'
 }];
+var _default = exports.default = resList;
+},{}],"src/components/Body.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _RestaurantCard = _interopRequireDefault(require("./RestaurantCard"));
+var _mockData = _interopRequireDefault(require("../utils/mockData"));
+var _react = require("react");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Body = function Body() {
-  return /*#__PURE__*/_react.default.createElement("div", {
+  // State variable
+  var _useState = (0, _react.useState)(_mockData.default),
+    _useState2 = _slicedToArray(_useState, 2),
+    listOfRestaurant = _useState2[0],
+    setListOfRestaurant = _useState2[1];
+
+  // normal JS variable
+  //   let listofRestaurantJS=[
+  //     {
+  //     data:{
+  //     id: '121603',
+  //     name: 'Kannur Food Point',
+  //     cloudinaryImageId: 'bmwn4n4bn6n1tcpc8x2h',
+  //     cuisines: ['Kerala', 'Chinese'],
+  //     costForTwo: 30000,
+  //     deliveryTime: 24,
+  //     avgRating: '3.9',
+
+  //   },
+  //   },
+
+  //   {
+  //     data:{
+  //     id: '121608',
+  //     name: 'delhi Food Point',
+  //     cloudinaryImageId: 'bmwn4n4bn6n1tcpc8x2h',
+  //     cuisines: ['North INdian ', 'Chinese'],
+  //     costForTwo: 30000,
+  //     deliveryTime: 24,
+  //     avgRating: '4.9',
+
+  //   },
+  //   },
+
+  //   {
+  //     data:{
+  //     id: '221608',
+  //     name: 'mumbai Food Point',
+  //     cloudinaryImageId: 'bmwn4n4bn6n1tcpc8x2h',
+  //     cuisines: ['vada pav ', 'Chinese'],
+  //     costForTwo: 30000,
+  //     deliveryTime: 24,
+  //     avgRating: '4.1',
+
+  //   },
+  //   }
+  // ]
+
+  return /*#__PURE__*/React.createElement("div", {
     className: "body"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "search"
-  }, "Search"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "filter"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "filter-btn",
+    onClick: function onClick() {
+      //filter logic here 
+      var filteredList = listOfRestaurant.filter(function (res) {
+        return res.data.avgRating > 4;
+      });
+      setListOfRestaurant(filteredList);
+    }
+  }, "Top Rated Restaurants")), /*#__PURE__*/React.createElement("div", {
     className: "rest-container"
-  }, resList.map(function (restaurant, index) {
-    return /*#__PURE__*/_react.default.createElement(RestaurantCard, {
+  }, listOfRestaurant.map(function (restaurant, index) {
+    return /*#__PURE__*/React.createElement(_RestaurantCard.default, {
       key: index,
       resData: restaurant
     });
   })));
 };
+var _default = exports.default = Body;
+},{"./RestaurantCard":"src/components/RestaurantCard.js","../utils/mockData":"src/utils/mockData.js","react":"node_modules/react/index.js"}],"src/App.js":[function(require,module,exports) {
+"use strict";
+
+var _react = _interopRequireDefault(require("react"));
+var _client = _interopRequireDefault(require("react-dom/client"));
+var _Header = _interopRequireDefault(require("./components/Header"));
+var _Body = _interopRequireDefault(require("./components/Body"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var AppLayout = function AppLayout() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app"
-  }, /*#__PURE__*/_react.default.createElement(Header, null), /*#__PURE__*/_react.default.createElement(Body, null));
+  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_Body.default, null));
 };
 
 // create root using createRoot
 var root = _client.default.createRoot(document.getElementById("root"));
 // passing react element inside root
 root.render( /*#__PURE__*/_react.default.createElement(AppLayout, null));
-},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/Header":"src/components/Header.js","./components/Body":"src/components/Body.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
