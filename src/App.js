@@ -19,5 +19,5 @@ const AppLayout=()=>{
 
 // create root using createRoot
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// passing react element inside root
+// passing react element inside r oot
 root.render(<AppLayout/>);
