@@ -10,7 +10,7 @@
 - //   restarantcontainer
 - //   restarant card
 - //    img
- -     // menu name star-rating
+- // menu name star-rating
 - // footer
 - //   links
 */
@@ -27,5 +27,6 @@ export const Component; import {Component} from "path";
 # React Hooks 
 Normal JS utility functions
 
-- useState() - Superpowerful State Variables in react whenever sate variables change react trigers a reconciliation cycle(rerenders the components) 
+- useState() - Superpowerful State Variables in react 
+             - whenever sate variables change react trigers a reconciliation cycle(rerenders the components) 
 - useEffect()
