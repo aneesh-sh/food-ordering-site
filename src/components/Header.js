@@ -1,9 +1,8 @@
 import { LOGO_URL } from "../utils/constant";
-import { useState } from "react";
-const Header=()=>{
+import { useState  } from "react";
+import { Link } from "react-router-dom";
 
-  // let btnName = "login"; 
-  // normal js variable that wont work that is why we use state variable 
+const Header=()=>{
 
   const [btnNameReact,setbtnnameReact ] = useState("Login");
     return(
@@ -15,9 +14,15 @@ const Header=()=>{
         </div>
         <div className="nav-items">
             <ul>
-              <li>Home</li>
-              <li>About us</li>
-              <li>contact us</li>
+              <li>
+                < Link to ="/">Home</Link>
+                </li>
+              <li>
+                <Link to="/about">About us</Link>
+                </li>
+              <li>
+                <Link to="/contact">contact us</Link>
+                </li>
               <li>Cart</li>
               <button className="login" onClick={() => {
                 btnNameReact == "Login" ? setbtnnameReact("Logout") :setbtnnameReact("Login");

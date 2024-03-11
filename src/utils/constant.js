@@ -4,4 +4,6 @@ export const CDN_URL =
  export const LOGO_URL = 
     "https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg?size=338&ext=jpg&ga=GA1.1.1448711260.1707091200&semt=ais";
 
+export const MENU_API =
+"https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=574280&catalog_qa=undefined";
 
