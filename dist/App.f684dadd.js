@@ -28872,7 +28872,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.MENU_API = exports.LOGO_URL = exports.CDN_URL = void 0;
 var CDN_URL = exports.CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/";
 var LOGO_URL = exports.LOGO_URL = "https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg?size=338&ext=jpg&ga=GA1.1.1448711260.1707091200&semt=ais";
-var MENU_API = exports.MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=574280&catalog_qa=undefined";
+var MENU_API = exports.MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=";
 },{}],"node_modules/@remix-run/router/dist/router.js":[function(require,module,exports) {
 var define;
 "use strict";
@@ -37882,7 +37882,7 @@ var RestaurantMenu = function RestaurantMenu() {
     itemCards = _resInfo$cards$2$grou.itemCards;
   return /*#__PURE__*/React.createElement("div", {
     className: "menu"
-  }, /*#__PURE__*/React.createElement("h1", null, name), /*#__PURE__*/React.createElement("p", null, cuisines.join(','), " - ", costForTwoMessage, " - ", areaName, "  ", avgRatingString), /*#__PURE__*/React.createElement("h2", null, "Menu"), /*#__PURE__*/React.createElement("ul", null, itemCards.map(function (item) {
+  }, /*#__PURE__*/React.createElement("h1", null, name), /*#__PURE__*/React.createElement("p", null, cuisines.join(','), " - ", costForTwoMessage, " - ", areaName, "  ", avgRatingString), /*#__PURE__*/React.createElement("h2", null, "Menu"), /*#__PURE__*/React.createElement("ul", null, itemCards && itemCards.map(function (item) {
     return /*#__PURE__*/React.createElement("li", {
       key: item.card.info.id
     }, item.card.info.name, "-", "Rs", item.card.info.price / 100);

@@ -37,9 +37,9 @@ const RestaurantMenu = () => {
             <p>{cuisines.join(',')} - {costForTwoMessage} - {areaName}  {avgRatingString}</p>
             <h2>Menu</h2>
             <ul>
-                {itemCards.map(item =>
+                {itemCards && itemCards.map((item)=>(
                 <li key={item.card.info.id}>
-                    {item.card.info.name}-{"Rs"}{item.card.info.price / 100}</li> )}
+                    {item.card.info.name}-{"Rs"}{item.card.info.price / 100}</li> ))}
                 
             </ul>
             
