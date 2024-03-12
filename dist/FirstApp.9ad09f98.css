@@ -61,5 +61,9 @@
 .filter{
     display: flex;
 }
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
 
 /*# sourceMappingURL=/FirstApp.9ad09f98.css.map */
