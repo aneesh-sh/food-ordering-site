@@ -37584,7 +37584,9 @@ var Header = function Header() {
     to: "/about"
   }, "About us")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement(_reactRouterDom.Link, {
     to: "/contact"
-  }, "Contact us")), /*#__PURE__*/React.createElement("li", null, "Cart"), /*#__PURE__*/React.createElement("button", {
+  }, "Contact us")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement(_reactRouterDom.Link, {
+    to: "/grocery"
+  }, "Grocery")), /*#__PURE__*/React.createElement("li", null, "Cart"), /*#__PURE__*/React.createElement("button", {
     className: "login",
     onClick: function onClick() {
       btnNameReact == "Login" ? setbtnnameReact("Logout") : setbtnnameReact("Login");
@@ -38136,10 +38138,101 @@ var RestaurantMenu = function RestaurantMenu() {
   })));
 };
 var _default = exports.default = RestaurantMenu;
-},{"./shimmer":"src/components/shimmer.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../utils/useRestaurantMenu":"src/utils/useRestaurantMenu.js"}],"src/App.js":[function(require,module,exports) {
+},{"./shimmer":"src/components/shimmer.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../utils/useRestaurantMenu":"src/utils/useRestaurantMenu.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+  return bundleURL;
+}
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+  return '/';
+}
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
+var getBundleURL = require('./bundle-url').getBundleURL;
+function loadBundlesLazy(bundles) {
+  if (!Array.isArray(bundles)) {
+    bundles = [bundles];
+  }
+  var id = bundles[bundles.length - 1];
+  try {
+    return Promise.resolve(require(id));
+  } catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+      return new LazyPromise(function (resolve, reject) {
+        loadBundles(bundles.slice(0, -1)).then(function () {
+          return require(id);
+        }).then(resolve, reject);
+      });
+    }
+    throw err;
+  }
+}
+function loadBundles(bundles) {
+  return Promise.all(bundles.map(loadBundle));
+}
+var bundleLoaders = {};
+function registerBundleLoader(type, loader) {
+  bundleLoaders[type] = loader;
+}
+module.exports = exports = loadBundlesLazy;
+exports.load = loadBundles;
+exports.register = registerBundleLoader;
+var bundles = {};
+function loadBundle(bundle) {
+  var id;
+  if (Array.isArray(bundle)) {
+    id = bundle[1];
+    bundle = bundle[0];
+  }
+  if (bundles[bundle]) {
+    return bundles[bundle];
+  }
+  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
+  var bundleLoader = bundleLoaders[type];
+  if (bundleLoader) {
+    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
+      if (resolved) {
+        module.bundle.register(id, resolved);
+      }
+      return resolved;
+    }).catch(function (e) {
+      delete bundles[bundle];
+      throw e;
+    });
+  }
+}
+function LazyPromise(executor) {
+  this.executor = executor;
+  this.promise = null;
+}
+LazyPromise.prototype.then = function (onSuccess, onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.then(onSuccess, onError);
+};
+LazyPromise.prototype.catch = function (onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.catch(onError);
+};
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 var _client = _interopRequireDefault(require("react-dom/client"));
 var _Header = _interopRequireDefault(require("./components/Header"));
 var _Body = _interopRequireDefault(require("./components/Body"));
@@ -38148,7 +38241,21 @@ var _About = _interopRequireDefault(require("./components/About"));
 var _Contact = _interopRequireDefault(require("./components/Contact"));
 var _Error = _interopRequireDefault(require("./components/Error"));
 var _RestaurantMenu = _interopRequireDefault(require("./components/RestaurantMenu"));
+var _shimmer = _interopRequireDefault(require("./components/shimmer"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+// import Grocery from "./components/Grocery";
+
+//chinking
+//Dynamic Bundling
+//code spliting
+//on demand loading
+// lazy loading
+
+var Grocery = (0, _react.lazy)(function () {
+  return require("_bundle_loader")(require.resolve("./components/Grocery"));
+});
 var AppLayout = function AppLayout() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app"
@@ -38167,6 +38274,11 @@ var appRouter = (0, _reactRouterDom.createBrowserRouter)([{
     path: "/contact",
     element: /*#__PURE__*/_react.default.createElement(_Contact.default, null)
   }, {
+    path: "/grocery",
+    element: /*#__PURE__*/_react.default.createElement(_react.Suspense, {
+      fallback: /*#__PURE__*/_react.default.createElement(_shimmer.default, null)
+    }, /*#__PURE__*/_react.default.createElement(Grocery, null))
+  }, {
     path: "/restaurants/:resId",
     element: /*#__PURE__*/_react.default.createElement(_RestaurantMenu.default, null)
   }],
@@ -38178,7 +38290,7 @@ var root = _client.default.createRoot(document.getElementById("root"));
 root.render( /*#__PURE__*/_react.default.createElement(_reactRouterDom.RouterProvider, {
   router: appRouter
 }));
-},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/Header":"src/components/Header.js","./components/Body":"src/components/Body.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./components/About":"src/components/About.js","./components/Contact":"src/components/Contact.js","./components/Error":"src/components/Error.js","./components/RestaurantMenu":"src/components/RestaurantMenu.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/Header":"src/components/Header.js","./components/Body":"src/components/Body.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./components/About":"src/components/About.js","./components/Contact":"src/components/Contact.js","./components/Error":"src/components/Error.js","./components/RestaurantMenu":"src/components/RestaurantMenu.js","./components/shimmer":"src/components/shimmer.js","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","./components/Grocery":[["Grocery.839b647a.js","src/components/Grocery.js"],"Grocery.839b647a.js.map","src/components/Grocery.js"]}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -38347,5 +38459,26 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/App.js"], null)
+},{}],"node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
+module.exports = function loadJSBundle(bundle) {
+  return new Promise(function (resolve, reject) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.type = 'text/javascript';
+    script.charset = 'utf-8';
+    script.src = bundle;
+    script.onerror = function (e) {
+      script.onerror = script.onload = null;
+      reject(e);
+    };
+    script.onload = function () {
+      script.onerror = script.onload = null;
+      resolve();
+    };
+    document.getElementsByTagName('head')[0].appendChild(script);
+  });
+};
+},{}],0:[function(require,module,exports) {
+var b=require("node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"src/App.js"], null)
 //# sourceMappingURL=/App.f684dadd.js.map
