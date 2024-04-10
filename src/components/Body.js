@@ -42,16 +42,24 @@ if(onlineStatus === false) return
 
     return listOfRestaurant.length == 0 ? <Shimmer /> : (
       <div className="body">
+<<<<<<< HEAD
         <div className="filter flex">
           <div className="search m-4 p-4">
           <input 
           type="text" 
           className="border border-solid border-black" 
+=======
+        <div className="filter">
+          <input 
+          type="text" 
+          className="search-box" 
+>>>>>>> dcf97b2b175fba8098c021a462954bb3d2138510
           value={searchText} 
           onChange={(e) =>{
             setsearchText(e.target.value);
           }}
           />
+<<<<<<< HEAD
           <button className=" px-4 py-2 bg-green-100 m-4 rounded-lg"
           onClick={() => {
   
@@ -68,6 +76,20 @@ if(onlineStatus === false) return
             <div className="search m-4 p-4 flex items-center ">
             <button 
           className = "px-4 py-2 bg-gray-100 rounded-lg"
+=======
+          <button 
+          onClick={() => {
+            // filter the restaurant and update the UI
+            // search text
+            const filteredRestaurant = listOfRestaurant.filter((res) =>
+            res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+
+            setfilteredRestaurant(filteredRestaurant);
+
+          }} >Search</button>
+          <button 
+          className = "filter-btn"
+>>>>>>> dcf97b2b175fba8098c021a462954bb3d2138510
            onClick={ () => {
             //filter logic here 
             const filteredList = listOfRestaurant.filter(
@@ -77,10 +99,15 @@ if(onlineStatus === false) return
             }}>
             Top Rated Restaurants
             </button>
+<<<<<<< HEAD
             </div>
          
           </div>
         <div className="rest-container flex flex-wrap">
+=======
+          </div>
+        <div className="rest-container">
+>>>>>>> dcf97b2b175fba8098c021a462954bb3d2138510
 
           {  filteredRestaurant.map((restaurant) => (
             <Link
@@ -91,8 +118,12 @@ if(onlineStatus === false) return
           ))}
    
         </div>
+<<<<<<< HEAD
         </div>
      
+=======
+      </div>
+>>>>>>> dcf97b2b175fba8098c021a462954bb3d2138510
     )
   }
 

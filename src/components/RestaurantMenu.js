@@ -20,9 +20,13 @@ const RestaurantMenu = () => {
     return (
         <div className="menu">
             <h1>{name}</h1>
+<<<<<<< HEAD
             <p className="font-bold text-lg">
                 {cuisines.join(',')} - {costForTwoMessage} - {areaName}  {avgRatingString}
                 </p>
+=======
+            <p>{cuisines.join(',')} - {costForTwoMessage} - {areaName}  {avgRatingString}</p>
+>>>>>>> dcf97b2b175fba8098c021a462954bb3d2138510
             <h2>Menu</h2>
             <ul>
                 {itemCards && itemCards.map((item)=>(

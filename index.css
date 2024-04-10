@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+=======
+>>>>>>> dcf97b2b175fba8098c021a462954bb3d2138510
 .header {
     display:flex;
     justify-content: space-between;
